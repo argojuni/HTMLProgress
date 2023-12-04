@@ -106,7 +106,7 @@ public class MovingPlatform : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             movementController.isOnPlatform = false;
-            PlayerRB.gravityScale = PlayerRB.gravityScale * 50;
+            PlayerRB.gravityScale = PlayerRB.gravityScale / 50;
         }
     }
 }
