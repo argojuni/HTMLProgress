@@ -232,7 +232,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &431596773
 GameObject:
@@ -277,7 +277,7 @@ Transform:
   m_Children:
   - {fileID: 2100332658}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -361,8 +361,7 @@ Transform:
   m_LocalPosition: {x: -1.86, y: 1.76, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1110138415}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -382,6 +381,7 @@ MonoBehaviour:
   xLimit: {x: -1.69, y: 27.05}
   yLimit: {x: -4.79, y: 1.76}
   smoothTime: 0.281
+  animCamera: {fileID: 0}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +549,7 @@ Transform:
   m_Children:
   - {fileID: 1512168983}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &667458803
 MonoBehaviour:
@@ -615,6 +615,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   wallCheckPoint: {fileID: 1512168983}
+  isOnPlatform: 0
+  platformRb: {fileID: 0}
+  particleController: {fileID: 0}
 --- !u!1 &1110138413
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,12 +695,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110138413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0652, y: 0.0226, z: 10}
+  m_LocalPosition: {x: -1.9252, y: 1.7826, z: 0}
   m_LocalScale: {x: 0.67560315, y: 0.6598155, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 519420032}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1512168982
 GameObject:

@@ -8,6 +8,7 @@ public class ParticleController : MonoBehaviour
     [SerializeField] ParticleSystem movementParticle;
     [SerializeField] ParticleSystem fallParticle;
     [SerializeField] ParticleSystem touchParticle;
+    [SerializeField] ParticleSystem dieParticle;
 
     [Range(0, 10)]
     [SerializeField] int occurAfterVelocity;
@@ -42,6 +43,12 @@ public class ParticleController : MonoBehaviour
     {
         touchParticle.transform.position = pos;
         touchParticle.Play();
+    }
+
+    public void PlayDieParticle(Vector2 pos)
+    {
+        dieParticle.transform.position = pos;
+        dieParticle.Play();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
