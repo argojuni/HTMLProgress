@@ -40,6 +40,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2819156393
+    locked: 0
+  - name: Particle
+    uniqueID: 756558903
+    locked: 0
+  - name: Obstacle
+    uniqueID: 3029112593
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 39102055
+    locked: 0
+  - name: Player
+    uniqueID: 3633975741
+    locked: 0
+  - name: Scene
+    uniqueID: 2755608697
     locked: 0
