@@ -10,10 +10,12 @@ public class GameController : MonoBehaviour
 
     CameraController cameraController;
     public ParticleController particleController;
+    private SpriteRenderer sprite;
     private void Awake()
     {
         cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         PlayerRb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
     private void Start()
     {
@@ -45,9 +47,12 @@ public class GameController : MonoBehaviour
         PlayerRb.simulated = false;
         PlayerRb.velocity = new Vector2(0, 0);
         transform.localScale = new Vector3(0, 0, 0);
+        sprite.enabled = false;
+        Debug.Log("Die");
         yield return new WaitForSeconds(duration);
         transform.position = checkpointPos;
         transform.localScale = new Vector3(1, 1, 1);
+        sprite.enabled = true;
         PlayerRb.simulated = true;
     }
 }
