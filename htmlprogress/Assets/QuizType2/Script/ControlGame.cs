@@ -24,13 +24,38 @@ public class ControlGame : MonoBehaviour
     public GameObject prefabBoxKata;
     public float exstraSpace;
 
-    [Header("Highlight Target TExt")]
+    [Header("Highlight Target Text")]
     public int indexPositionHighlight;
     public GameObject[] cloneBoxKatas;
+
+    [Header("Potongan Kata")]
+    public int[] indexRandomPotonganKata;
+    public Text textPotonganKata;
+    public int countKata;
+    public RectTransform rtPotonganKata;
+    public float extraSpacePotonganKata;
 
     private void Start()
     {
         RandomImageSoal();
+
+        GeneratPotonganKata();
+    }
+
+    void GeneratPotonganKata()
+    {
+        indexRandomPotonganKata = new int[splitStringImageSoal.Length];//create slot
+
+        for(int i = 0; i<indexRandomPotonganKata.Length; i++)
+        {
+            indexRandomPotonganKata[i] = i;//fill array
+        }
+
+        RandomValue(indexRandomPotonganKata);//random index
+
+        textPotonganKata.text = splitStringImageSoal[indexRandomPotonganKata[countKata]]; //update UI Text
+
+        rtPotonganKata.sizeDelta = new Vector2(textPotonganKata.preferredWidth + extraSpacePotonganKata, rtPotonganKata.sizeDelta.y); //resize box
     }
 
     public void ButtonHighlight()
