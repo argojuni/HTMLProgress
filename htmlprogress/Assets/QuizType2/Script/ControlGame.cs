@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class ControlGame : MonoBehaviour
 {
@@ -23,10 +24,48 @@ public class ControlGame : MonoBehaviour
     public GameObject prefabBoxKata;
     public float exstraSpace;
 
+    [Header("Highlight Target TExt")]
+    public int indexPositionHighlight;
+    public GameObject[] cloneBoxKatas;
+
     private void Start()
     {
         RandomImageSoal();
     }
+
+    public void ButtonHighlight()
+    {
+        if(EventSystem.current.currentSelectedGameObject.name == "left")
+        {
+            indexPositionHighlight -= 1;
+            if (indexPositionHighlight < 0)
+            {
+                indexPositionHighlight = cloneBoxKatas.Length - 1; //lastElement
+            }
+        }
+        else//right
+        {
+            indexPositionHighlight += 1;
+            if (indexPositionHighlight > splitStringImageSoal.Length - 1)
+            {
+                indexPositionHighlight = 0; //firstElement
+            }
+        }
+
+        for(int i =0; i<cloneBoxKatas.Length; i++)
+        {
+            if(i != indexPositionHighlight)
+            {
+                cloneBoxKatas[i].transform.GetChild(1).gameObject.SetActive(false);//matikan semua
+            }
+            else
+            {
+                cloneBoxKatas[i].transform.GetChild(1).gameObject.SetActive(true);//hidupkan semua
+            }
+        }
+
+    }
+
     void RandomImageSoal()
     {
         indexRandomSprites = new int[spriteSoals.Length];
@@ -43,8 +82,6 @@ public class ControlGame : MonoBehaviour
         //implementasi keterangan gambar
         splitStringImageSoal = stringImageSoal[indexRandomSprites[gameRound]].Split(' ');//dipotong dengan acuan spasi
 
-        RandomValueString(splitStringImageSoal);// random string
-
         lenghtPerText = new int[splitStringImageSoal.Length];//create slot
 
         for(int i=0; i<lenghtPerText.Length; i++)
@@ -60,11 +97,15 @@ public class ControlGame : MonoBehaviour
             }
         }
 
+        cloneBoxKatas = new GameObject[splitStringImageSoal.Length];//create slot array
+
         //respons
         for(int i=0; i<splitStringImageSoal.Length; i++)
         {
             GameObject cloneBoxKata = Instantiate(prefabBoxKata);// respawn
             cloneBoxKata.transform.SetParent(perentKata);// set parent
+
+            cloneBoxKatas[i] = cloneBoxKata; //fiill array
 
             if(i == 0)// for change size x
             {
@@ -74,6 +115,8 @@ public class ControlGame : MonoBehaviour
                 Debug.Log(textTerpanjang.flexibleWidth + "/" + textTerpanjang.preferredWidth);
 
                 perentKata.GetComponent<GridLayoutGroup>().cellSize = new Vector2(textTerpanjang.preferredWidth + exstraSpace, perentKata.GetComponent<GridLayoutGroup>().cellSize.y);
+
+                cloneBoxKata.transform.GetChild(1).gameObject.SetActive(true);// aktifkan highlight
             }
 
             Text textCloneBoxKata = cloneBoxKata.transform.GetChild(0).GetComponent<Text>();
